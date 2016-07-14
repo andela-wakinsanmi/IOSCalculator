@@ -25,6 +25,16 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    var displayValue : Double {
+        get {
+            return Double(display.text!)!
+        }
+        set{
+            display.text = String(newValue)
+            //newValue is a swift keyword to mean the newValue being set
+        }
+    }
 
     @IBAction func performOperation(sender: UIButton) {
         if let mathematicalSymbol = sender.currentTitle {
