@@ -39,7 +39,9 @@ class ViewController: UIViewController {
     @IBAction func performOperation(sender: UIButton) {
         if let mathematicalSymbol = sender.currentTitle {
             if mathematicalSymbol == "π" {
-                display.text = String(M_PI)
+                displayValue = M_PI
+            } else if mathematicalSymbol == "√" {
+                displayValue = sqrt(displayValue)
             }
         }
         userIsInTheMiddleOfTyping = false;
