@@ -35,6 +35,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88505FC91D37D5E9005296E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				889A8A991D0EA357002AE3B1 /* AppDelegate.swift */,
+				889A8AA01D0EA358002AE3B1 /* Assets.xcassets */,
+				889A8AA21D0EA358002AE3B1 /* LaunchScreen.storyboard */,
+				889A8AA51D0EA358002AE3B1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		889A8A8D1D0EA354002AE3B1 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +65,9 @@
 		889A8A981D0EA357002AE3B1 /* IOSCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				889A8A991D0EA357002AE3B1 /* AppDelegate.swift */,
+				88505FC91D37D5E9005296E8 /* Supporting Files */,
 				889A8A9B1D0EA357002AE3B1 /* ViewController.swift */,
 				889A8A9D1D0EA358002AE3B1 /* Main.storyboard */,
-				889A8AA01D0EA358002AE3B1 /* Assets.xcassets */,
-				889A8AA21D0EA358002AE3B1 /* LaunchScreen.storyboard */,
-				889A8AA51D0EA358002AE3B1 /* Info.plist */,
 			);
 			path = IOSCalculator;
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 				TargetAttributes = {
 					889A8A951D0EA354002AE3B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 56EZ273WY6;
 					};
 				};
 			};
@@ -249,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = IOSCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andela.IOSCalculator;
@@ -260,6 +270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = IOSCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andela.IOSCalculator;
@@ -286,6 +297,7 @@
 				889A8AAA1D0EA358002AE3B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
