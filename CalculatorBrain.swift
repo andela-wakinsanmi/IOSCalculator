@@ -14,10 +14,11 @@ class CalculatorBrain {
         accumulator = operand
     }
     
-    private var operations : Dictionary<String, Double> = [
-        "π" : M_PI,
-        "e" : M_E
-        "√"  : sqrt(<#T##Double#>)
+    private var operations : Dictionary<String, Operation> = [
+        "π" : Operation.Constant, //M_PI,
+        "e" : Operation.Constant, //M_E,
+        "√"  : Operation.UnaryOperation,  //sqrt(<#T##Double#>),
+        "cos" : Operation.UnaryOperation //cos(<#T##Double#>)
     ]
     
     func performOperation (symbol : String) {
@@ -26,9 +27,9 @@ class CalculatorBrain {
         }
     }
     
-    enum operation {
+    enum Operation {
         case Constant
-        case UnaryOperatiom
+        case UnaryOperation
         case BinaryOperation
         case Equals
     }
