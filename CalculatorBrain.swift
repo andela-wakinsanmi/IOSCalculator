@@ -14,17 +14,25 @@ class CalculatorBrain {
         accumulator = operand
     }
     
-    private var operation : Dictionary<String, Double> = [
+    private var operations : Dictionary<String, Double> = [
         "π" : M_PI,
         "e" : M_E
         "√"  : sqrt(<#T##Double#>)
     ]
     
     func performOperation (symbol : String) {
-        if let constant = operation[symbol] {
+        if let constant = operations[symbol] {
             accumulator = constant
         }
     }
+    
+    enum operation {
+        case Constant
+        case UnaryOperatiom
+        case BinaryOperation
+        case Equals
+    }
+    
     
     //Placing get inside the result, makes it read only.. So client can't set it
     var result : Double {
