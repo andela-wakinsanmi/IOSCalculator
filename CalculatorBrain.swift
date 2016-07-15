@@ -14,19 +14,22 @@ class CalculatorBrain {
         accumulator = operand
     }
     
+    private var operation : Dictionary<String, Double> = [
+        "π" : M_PI,
+        "e" : M_E
+        "√"  : sqrt(<#T##Double#>)
+    ]
+    
     func performOperation (symbol : String) {
-        switch symbol {
-        case "π" : accumulator = M_PI
-        case "√" : accumulator = sqrt(accumulator)
-        default:
-            break
+        if let constant = operation[symbol] {
+            accumulator = constant
         }
     }
     
     //Placing get inside the result, makes it read only.. So client can't set it
     var result : Double {
         get{
-            return 0.0
+            return accumulator
         }
     }
 }
