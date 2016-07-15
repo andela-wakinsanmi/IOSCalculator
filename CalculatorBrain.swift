@@ -22,8 +22,13 @@ class CalculatorBrain {
     ]
     
     func performOperation (symbol : String) {
-        if let constant = operations[symbol] {
-            accumulator = constant
+        if let operation = operations[symbol] {
+            switch operation {
+            case .Constant: break;
+            case .BinaryOperation : break;
+            case .UnaryOperation : break;
+            case .Equals : break;
+            }
         }
     }
     
