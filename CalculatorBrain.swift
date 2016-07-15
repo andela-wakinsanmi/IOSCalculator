@@ -24,8 +24,10 @@ class CalculatorBrain {
     private var operations : Dictionary<String, Operation> = [
         "π" : Operation.Constant(M_PI), //M_PI,
         "e" : Operation.Constant(M_E), //M_E,
-        "√"  : Operation.UnaryOperation,  //sqrt(<#T##Double#>),
-        "cos" : Operation.UnaryOperation //cos(<#T##Double#>)
+        "√"  : Operation.UnaryOperation(sqrt),  //sqrt(<#T##Double#>),
+        //Here we have to put a function that takes a double and returns a double
+        "cos" : Operation.UnaryOperation(cos) //cos(<#T##Double#>)
+        //passing it here too
     ]
     
     func performOperation (symbol : String) {
@@ -34,7 +36,10 @@ class CalculatorBrain {
             case .Constant (let associativeValue):
                 accumulator = associativeValue
             case .BinaryOperation : break
-            case .UnaryOperation : break
+                //We also have to pass associativeValue here too
+            case .UnaryOperation (let associativeFunction) :
+                accumulator = associativeFunction(accumulator)
+                
             case .Equals : break
             }
         }
@@ -44,7 +49,9 @@ class CalculatorBrain {
     
     enum Operation {
         case Constant(Double)
-        case UnaryOperation
+        //to do the unary operation, we have to parse a function as the associative value
+        case UnaryOperation((Double) -> Double)
+        //It takes a function that takes a double and returns a double
         case BinaryOperation
         case Equals
     }
