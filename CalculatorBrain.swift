@@ -12,6 +12,7 @@ import Foundation
 enum Optional<T> {
     case NONE
     case Some(T)
+    //Associating value T with the constant T
 }
 
 class CalculatorBrain {
@@ -21,8 +22,8 @@ class CalculatorBrain {
     }
     
     private var operations : Dictionary<String, Operation> = [
-        "π" : Operation.Constant, //M_PI,
-        "e" : Operation.Constant, //M_E,
+        "π" : Operation.Constant(M_PI), //M_PI,
+        "e" : Operation.Constant(M_E), //M_E,
         "√"  : Operation.UnaryOperation,  //sqrt(<#T##Double#>),
         "cos" : Operation.UnaryOperation //cos(<#T##Double#>)
     ]
@@ -41,7 +42,7 @@ class CalculatorBrain {
     
     
     enum Operation {
-        case Constant
+        case Constant(Double)
         case UnaryOperation
         case BinaryOperation
         case Equals
