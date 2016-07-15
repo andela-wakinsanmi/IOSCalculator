@@ -31,10 +31,11 @@ class CalculatorBrain {
     func performOperation (symbol : String) {
         if let operation = operations[symbol] {
             switch operation {
-            case .Constant: break;
-            case .BinaryOperation : break;
-            case .UnaryOperation : break;
-            case .Equals : break;
+            case .Constant (let associativeValue):
+                accumulator = associativeValue
+            case .BinaryOperation : break
+            case .UnaryOperation : break
+            case .Equals : break
             }
         }
     }
