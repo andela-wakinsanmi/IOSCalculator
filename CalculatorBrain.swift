@@ -8,6 +8,12 @@
 
 import Foundation
 
+//Not optional is an enum .. which is probably declared like this
+enum Optional<T> {
+    case NONE
+    case Some(T)
+}
+
 class CalculatorBrain {
     private var accumulator = 0.0
     func setOperand (operand : Double) {
@@ -31,6 +37,8 @@ class CalculatorBrain {
             }
         }
     }
+    
+    
     
     enum Operation {
         case Constant
