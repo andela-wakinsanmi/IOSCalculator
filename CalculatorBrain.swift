@@ -8,9 +8,13 @@
 
 import Foundation
 
-func multiply(op1 : Double , op2 : Double ) -> Double {
-    return op1 * op2
-}
+//func multiply
+/*
+    We can start making each function for the other binary operation
+ like subtract, divide, add ...
+ We can use swift to do that because it implements closures... Closure is like an inline function.. It is an inline function that captures the state of it's environment
+ Now... Take the function in the multiply above and paste it.. without the method name
+ */
 
 class CalculatorBrain {
     private var accumulator = 0.0
@@ -24,7 +28,12 @@ class CalculatorBrain {
         "e" : Operation.Constant(M_E),
         "√"  : Operation.UnaryOperation(sqrt),
         "cos" : Operation.UnaryOperation(cos),
-        "×" : Operation.BinaryOperation(multiply),
+        "×" : Operation.BinaryOperation((op1 : Double , op2 : Double ) -> Double {
+            return op1 * op2
+            }),
+        "−" : Operation.BinaryOperation(subtract),
+        "÷" : Operation.BinaryOperation(divide),
+        "+" : Operation.BinaryOperation(add),
         "=" : Operation.Equals
         
     ]
