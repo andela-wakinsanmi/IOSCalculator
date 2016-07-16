@@ -34,9 +34,9 @@ class CalculatorBrain {
         //If we do this, then we don't need the first part ($0, $1) in
         //Now we are left with {return $0 * $1 }
         //Since in the kind of method we are expecting in BinaryOperation in the enum takes two doubles and returns a double.. We don't need the return type, Swift can infer ir
-        "−" : Operation.BinaryOperation(subtract),
-        "÷" : Operation.BinaryOperation(divide),
-        "+" : Operation.BinaryOperation(add),
+        "−" : Operation.BinaryOperation({ $0 - $1 }),
+        "÷" : Operation.BinaryOperation({ $0 / $1 }),
+        "+" : Operation.BinaryOperation({ $0 + $1 }),
         "=" : Operation.Equals
         
     ]
