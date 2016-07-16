@@ -28,12 +28,12 @@ class CalculatorBrain {
         "e" : Operation.Constant(M_E),
         "√"  : Operation.UnaryOperation(sqrt),
         "cos" : Operation.UnaryOperation(cos),
-        "×" : Operation.BinaryOperation( {(op1 , op2) in return op1 * op2 }),
-        //Now we are going to use type inference to look beter
-        //Swift knows, it accepts a double .. so we can get rid of the Double declaration
-        //we can also remove the return type -> Double too, Swift knows that
-        
-        
+        "×" : Operation.BinaryOperation( {$0 * $1 }),
+        //It can get better than that because closures can have default Arguments
+        // The default argument names are $0, $1 , $2, $3 depending on how many Arguments you have {($0, $1) in return $0 * $1 }
+        //If we do this, then we don't need the first part ($0, $1) in
+        //Now we are left with {return $0 * $1 }
+        //Since in the kind of method we are expecting in BinaryOperation in the enum takes two doubles and returns a double.. We don't need the return type, Swift can infer ir
         "−" : Operation.BinaryOperation(subtract),
         "÷" : Operation.BinaryOperation(divide),
         "+" : Operation.BinaryOperation(add),
