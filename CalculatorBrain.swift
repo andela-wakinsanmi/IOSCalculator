@@ -28,10 +28,12 @@ class CalculatorBrain {
         "e" : Operation.Constant(M_E),
         "√"  : Operation.UnaryOperation(sqrt),
         "cos" : Operation.UnaryOperation(cos),
-        "×" : Operation.BinaryOperation( {(op1 : Double , op2 : Double ) -> Double in return op1 * op2
-            }),
-        //1st remove the { and place it before the argument, the whole closure has to be surrpounded by {}
-        //Since we need to seperate the argument with the body.. put IN in the position of the {
+        "×" : Operation.BinaryOperation( {(op1 , op2) in return op1 * op2 }),
+        //Now we are going to use type inference to look beter
+        //Swift knows, it accepts a double .. so we can get rid of the Double declaration
+        //we can also remove the return type -> Double too, Swift knows that
+        
+        
         "−" : Operation.BinaryOperation(subtract),
         "÷" : Operation.BinaryOperation(divide),
         "+" : Operation.BinaryOperation(add),
