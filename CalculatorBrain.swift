@@ -37,31 +37,27 @@ class CalculatorBrain {
                 accumulator = associativeValue
             case .BinaryOperation (let function) :
                 //Creating object of the struct and passing the arguments
+                executeBinaryOperation()
                 pending = pendinBinaryOperationInfo(binaryOperation: function, firstOperand: accumulator)
             case .UnaryOperation (let associativeFunction) :
                 accumulator = associativeFunction(accumulator)
             case .Equals :
-                if pending != nil {
-                    accumulator = pending!.binaryOperation(pending!.firstOperand, accumulator)
-                    pending = nil
-                }
+                executeBinaryOperation()
+                
             }
         }
     }
     
-    private var pending : pendinBinaryOperationInfo?
-    /*
-        This is an optional becaue the PendingBinartyOperation is only there when we have a pendin operation.. If we have not tap *, / + , We want the pending var to be nil at that point
-    */
+    private func executeBinaryOperation() {
+        if pending != nil {
+            accumulator = pending!.binaryOperation(pending!.firstOperand, accumulator)
+            pending = nil
+        }
+        
+    }
     
-    /*
-     Struct is like class, It can have doubles, stored vals and computed vals
-     No inheritance .. The big difference is that, Struct like enum are passed by value while classes are passed by referencne
-     An array in swift is a struct, a double is a struct, int and String are all struct..
-     
-     So if we pass an array to another method and we add something to the array, it will be added in the callers Array... The caller will have that Array without the new thing added
-     */
-    struct pendinBinaryOperationInfo {
+    private var pending : pendinBinaryOperationInfo?
+       struct pendinBinaryOperationInfo {
         var binaryOperation : (Double,Double) -> Double
         var firstOperand : Double
     }
