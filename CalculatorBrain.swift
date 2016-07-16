@@ -8,8 +8,6 @@
 
 import Foundation
 
-//This is a global function
-
 func multiply(op1 : Double , op2 : Double ) -> Double {
     return op1 * op2
 }
@@ -29,7 +27,6 @@ class CalculatorBrain {
         "×" : Operation.BinaryOperation(multiply),
         "=" : Operation.Equals
         
-        //We give it a function that doesnot exist yet, we have to go write that
     ]
     
     
@@ -39,7 +36,6 @@ class CalculatorBrain {
             case .Constant (let associativeValue):
                 accumulator = associativeValue
             case .BinaryOperation (let function) :
-                //accumulator = function()
                 break;
             case .UnaryOperation (let associativeFunction) :
                 accumulator = associativeFunction(accumulator)
@@ -49,6 +45,17 @@ class CalculatorBrain {
         }
     }
     
+    /*
+     Struct is like class, It can have doubles, stored vals and computed vals
+     No inheritance .. The big difference is that, Struct like enum are passed by value while classes are passed by referencne
+     An array in swift is a struct, a double is a struct, int and String are all struct..
+     
+     So if we pass an array to another method and we add something to the array, it will be added in the callers Array... The caller will have that Array without the new thing added
+     */
+    struct pendinBinaryOperationInfo {
+        var binaryOperation : (Double,Double) -> Double
+        var firstOperand : Double
+    }
     
     
     enum Operation {
