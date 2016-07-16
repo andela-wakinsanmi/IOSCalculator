@@ -36,14 +36,23 @@ class CalculatorBrain {
             case .Constant (let associativeValue):
                 accumulator = associativeValue
             case .BinaryOperation (let function) :
-                break;
+                //Creating object of the struct and passing the arguments
+                pending = pendinBinaryOperationInfo(binaryOperation: function, firstOperand: accumulator)
             case .UnaryOperation (let associativeFunction) :
                 accumulator = associativeFunction(accumulator)
-                
-            case .Equals : break
+            case .Equals :
+                if pending != nil {
+                    accumulator = pending!.binaryOperation(pending!.firstOperand, accumulator)
+                    pending = nil
+                }
             }
         }
     }
+    
+    private var pending : pendinBinaryOperationInfo?
+    /*
+        This is an optional becaue the PendingBinartyOperation is only there when we have a pendin operation.. If we have not tap *, / + , We want the pending var to be nil at that point
+    */
     
     /*
      Struct is like class, It can have doubles, stored vals and computed vals
